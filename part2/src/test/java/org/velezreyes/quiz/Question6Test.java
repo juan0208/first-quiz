@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.velezreyes.quiz.question6.Drink;
-import org.velezreyes.quiz.question6.NotEnoughMoneyException;
+import org.velezreyes.quiz.question6.NotEnoughAmountException;
 import org.velezreyes.quiz.question6.UnknownDrinkException;
 import org.velezreyes.quiz.question6.VendingMachine;
 import org.velezreyes.quiz.question6.VendingMachineImpl;
@@ -25,7 +25,7 @@ public class Question6Test {
   public void drinkNotFree() {
     VendingMachine vm = VendingMachineImpl.getInstance();
 
-    Exception exception = assertThrows(NotEnoughMoneyException.class, () -> {
+    Exception exception = assertThrows(NotEnoughAmountException.class, () -> {
       vm.pressButton("ScottCola");
     });
   }
@@ -44,6 +44,7 @@ public class Question6Test {
     assertEquals(drink.getName(), "ScottCola");
   }
 
+  @Test
   public void machineResets() throws Exception {
     VendingMachine vm = VendingMachineImpl.getInstance();
 
@@ -54,7 +55,7 @@ public class Question6Test {
     Drink drink = vm.pressButton("ScottCola");
     assertNotNull(drink);
 
-    Exception exception = assertThrows(NotEnoughMoneyException.class, () -> {
+    Exception exception = assertThrows(NotEnoughAmountException.class, () -> {
       vm.pressButton("ScottCola");
     });
   }
@@ -68,7 +69,7 @@ public class Question6Test {
     vm.insertQuarter();
 
     // Test that KarenTea costs more than 75 cents.
-    assertThrows(NotEnoughMoneyException.class, () -> {
+    assertThrows(NotEnoughAmountException.class, () -> {
       vm.pressButton("KarenTea");
     });
 

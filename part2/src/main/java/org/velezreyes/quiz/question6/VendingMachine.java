@@ -4,5 +4,6 @@ public interface VendingMachine {
 
   public void insertQuarter();
 
-  public Drink pressButton(String name) throws NotEnoughMoneyException, UnknownDrinkException;
+  public Drink pressButton(String name) throws NotEnoughAmountException, UnknownDrinkException;
+
 }
