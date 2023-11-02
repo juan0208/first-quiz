@@ -13,23 +13,34 @@
 # need to be fixed. The test suite in `question1_test.py` will verify the output.
 # Read the test suite to know the values that these functions should return.
 
+city_temperatures = {
+    "Quito": 22,
+    "Sao Paulo": 17,
+    "San Francisco": 16,
+    "New York": 14
+}
+
+
+city_weather_conditions = {
+    "Sao Paulo": "cloudy",
+    "New York": "rainy",
+    "Quito": "sunny"
+}
+
 def get_city_temperature(city):
-   if city == "Quito":
-      return 22
-   if city == "Sao Paulo":
-      return 17
-   if city == "San Francisco":
-      return 16
+
+    temperature = city_temperatures.get(city)
+    if temperature is not None:
+        return temperature
+    else:
+        return None
 
 def get_city_weather(city):
+ 
+    sky_condition = city_weather_conditions.get(city)
+    temperature = get_city_temperature(city)
 
-  sky_condition = None
-
-  if city == "Sao Paulo":
-     sky_condition = "cloudy"
-  elif city == "New York":
-     sky_condition = "rainy"
-
-  temperature = get_city_temperature(city)
-
-  return str(temperature) + " degrees and " + sky_condition
+    if sky_condition is not None and temperature is not None:
+        return f"{temperature} degrees and {sky_condition}"
+    else:
+        return "City not found"
