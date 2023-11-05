@@ -1,0 +1,7 @@
+- User uploads a story, which is stored in Amazon S3.
+- AWS Lambda processes the story and stores it in CloudFront for efficient distribution.
+- User and story-related information is stored in an Amazon RDS database.
+- AWS Lambda is used to perform background tasks, such as processing comments or reactions to the story, through SQS.
+- Amazon Cognito handles user authentication and authorization.
+- Amazon Route 53 manages traffic management, routes user requests to the appropriate AWS regions, and ensures redundancy and high availability.
+D
